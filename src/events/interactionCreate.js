@@ -1,4 +1,12 @@
-const { Events, MessageFlags, ChannelType } = require("discord.js");
+const {
+  Events,
+  MessageFlags,
+  ChannelType,
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  EmbedBuilder,
+} = require("discord.js");
 
 module.exports = {
   name: Events.InteractionCreate,
@@ -52,9 +60,35 @@ module.exports = {
           ],
         });
 
+        const ticketChannelEmbed = new EmbedBuilder()
+          .setTitle("End ticket")
+          .setDescription(
+            "Click on the button below when the problem has been solved."
+          )
+          .setColor("Blue");
+
+        const row = new ActionRowBuilder();
+        const endButton = new ButtonBuilder()
+          .setLabel("End")
+          .setCustomId("404")
+          .setEmoji("🔒")
+          .setStyle(ButtonStyle.Danger);
+
+        row.components.push(endButton);
+
+        const embedToPin = await ticketChannel.send({
+          embeds: [ticketChannelEmbed],
+          components: [row],
+        });
+        await embedToPin.pin();
+
         await interaction.editReply(
           `A private channel has been created for you at <#${ticketChannel.id}>.`
         );
+      }
+
+      if (interaction.customId === "404") {
+        await interaction.channel.delete();
       }
     }
   },
