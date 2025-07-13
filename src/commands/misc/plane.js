@@ -1,20 +1,36 @@
 const { SlashCommandBuilder } = require("discord.js");
-const accessKey = require("../../../config.json");
+const axios = require("axios");
+const { apiKey } = require("../../../config.json");
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("plane")
-    .setDescription("Sends a plane"),
+    .setDescription("Sends a plane image"),
   async execute(interaction) {
     await interaction.deferReply();
-    const response = await fetch(
-      `https://api/unsplash.com/photos/random?query=plane&orientation=landscape&client_id=${accessKey}`
-    );
-    const data = await response.json();
+
+    const res = await axios.get("https://pixabay.com/api/", {
+      params: {
+        key: apiKey,
+        q: "airplane",
+        image_type: "photo",
+        safesearch: true,
+        per_page: 50,
+      },
+    });
+
+    const hits = res.data.hits;
+    if (!hits || hits.length === 0) {
+      return await interaction.editReply(
+        "No airplane images available at the moment 😢"
+      );
+    }
+
+    const randomImage = hits[Math.floor(Math.random() * hits.length)];
 
     await interaction.editReply({
-      content: `Here's your plane!\nPhoto by [${data.user.name}](${data.user.links.html}) on [Unsplash](https://unsplash.com)`,
-      files: [data.urls.regular],
+      content: `Here is your airplane image, freshly stolen from Pixabay.`,
+      files: [randomImage.largeImageURL],
     });
   },
 };

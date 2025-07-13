@@ -53,5 +53,6 @@ for (const file of eventFiles) {
     client.on(event.name, (...args) => event.execute(...args));
   }
 }
+
 // Connecting to the Discord app
 client.login(token);

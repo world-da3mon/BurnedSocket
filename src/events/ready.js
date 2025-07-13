@@ -1,4 +1,5 @@
 const { Events, ActivityType } = require("discord.js");
+const { startYoutubePolling } = require("../youtubeChecker");
 
 module.exports = {
   name: Events.ClientReady,
@@ -12,5 +13,7 @@ module.exports = {
       name: "RetroSocket",
       type: ActivityType.Watching,
     });
+
+    startYoutubePolling(client);
   },
 };
