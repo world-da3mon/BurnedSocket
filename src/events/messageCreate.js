@@ -11,7 +11,7 @@ module.exports = {
     }
 
     // For your dumbass
-    if (msgcontent.includes("huh")) {
+    if (msgcontent.content === "Huh?") {
       if (message.author.id == "802840391161872405") {
         message.reply("Huh?");
       }
