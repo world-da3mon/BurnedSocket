@@ -35,7 +35,7 @@ async function checkYoutube(client) {
     const title = video.snippet.title;
     const link = `https://www.youtube.com/watch?v=${videoId}`;
 
-    const channel = await client.channels.fetch("1393937945366364352");
+    const channel = await client.channels.fetch("1393627164179435691");
     channel.send(
       `>>> **New video out now :** ${title}\nWatch it [here](${link})`
     );

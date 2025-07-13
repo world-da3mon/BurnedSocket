@@ -15,7 +15,7 @@ module.exports = {
   async execute(interaction) {
     await interaction.deferReply({ flags: MessageFlags.Ephemeral });
     interactionUser = interaction.member;
-    hasPermissions = interactionUser.roles.cache.has("1393678029716455556");
+    hasPermissions = interactionUser.roles.cache.has("1393625676350885938");
 
     if (!hasPermissions)
       interaction.editReply(

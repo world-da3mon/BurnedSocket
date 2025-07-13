@@ -5,7 +5,7 @@ module.exports = {
   async execute(member) {
     // Welcomer
     const welcomeChannel = await member.guild.channels.cache.get(
-      "1393675008638849166"
+      "1393627778196308151"
     );
 
     welcomeChannel.send(
@@ -16,13 +16,13 @@ You're now plugged into the most nostalgic terminal on the internet.
 Here, we worship the command line, revive dusty machines, meme about BSODs, and argue over the best Linux distro (it's obviously not Ubuntu... or is it? 👀)
 
 💡 New here?
-• Head over to <#1393723725253312662> to get the vibe
+• Head over to <#1393626733835452578> to get the vibe
 • And most importantly... **don’t rm -rf /**
 
 Let’s get nerdy. 🐧`
     );
 
     // Auto-adding the Noobuntu role
-    await member.roles.add("1393674259729219605");
+    await member.roles.add("1257827366785384479");
   },
 };

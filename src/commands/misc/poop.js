@@ -18,7 +18,7 @@ module.exports = {
       );
     } else {
       const target = interaction.options.getMember("member");
-      const poopRoleId = "1393986379196792985";
+      const poopRoleId = "1393625676350885938";
       const isPoop = target.roles.cache.has(poopRoleId);
 
       if (isPoop) {

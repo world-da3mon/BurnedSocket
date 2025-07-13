@@ -8,12 +8,12 @@ module.exports = {
     }
 
     const reactionMessage = reaction.message;
-    if (reactionMessage.channelId == "1393674489338003584") {
+    if (reactionMessage.channelId == "1393633550342819992") {
       const starReaction = reactionMessage.reactions.cache.get("⭐");
 
       if (starReaction.count >= 3) {
         const starboardChannel = reactionMessage.guild.channels.cache.get(
-          "1393674458710937611"
+          "1393633904987996283"
         );
 
         const attachments = reactionMessage.attachments

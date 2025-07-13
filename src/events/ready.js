@@ -21,7 +21,7 @@ module.exports = {
       type: ActivityType.Watching,
     });
 
-    const helpChannel = await client.channels.fetch("1393958025076674682");
+    const helpChannel = await client.channels.fetch("1393660518031425587");
     const channelMessages = await helpChannel.messages.fetch();
 
     if (channelMessages.size === 0) {

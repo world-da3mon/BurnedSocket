@@ -46,7 +46,7 @@ module.exports = {
         const ticketChannel = await interaction.guild.channels.create({
           name: `help-${interaction.user.displayName}`,
           type: ChannelType.GuildText,
-          parent: "1393969589901197323",
+          parent: "1393630162221924382",
           reason: `Ticket opened by ${interaction.user.username}`,
           permissionOverwrites: [
             {
