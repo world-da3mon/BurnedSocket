@@ -1,8 +1,8 @@
-const { Events } = require('discord.js');
 const levelManager = require('./levelmanager');
+const LEVEL_UP_CHANNEL_ID = '1394076112073789500';
 
 module.exports = {
-  name: Events.MessageCreate,
+  name: 'messageCreate',
   async execute(message) {
     if (message.author.bot || !message.guild) return;
 
@@ -19,14 +19,15 @@ module.exports = {
       const allLevelRoles = levelManager.getAllLevelRoles();
 
       if (newRoleId) {
-        // Retirer anciens rôles de niveau
         const rolesToRemove = member.roles.cache.filter(r => allLevelRoles.includes(r.id));
         await member.roles.remove(rolesToRemove).catch(() => {});
-        // Ajouter le nouveau rôle
         await member.roles.add(newRoleId).catch(() => {});
       }
 
-      message.channel.send(`🎉 ${message.author.username} is now at the level ${level} !`);
+      const channel = message.guild.channels.cache.get(LEVEL_UP_CHANNEL_ID);
+      if (channel) {
+        channel.send(`🎉 ${message.author.username} is now level ${level} !`);
+      }
     }
   }
 };
