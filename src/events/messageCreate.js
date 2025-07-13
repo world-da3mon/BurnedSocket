@@ -1,8 +1,9 @@
 const { Events } = require("discord.js");
+const levelHandler = require("../leveling/levelhandler");
 
 module.exports = {
   name: Events.MessageCreate,
-  execute(message) {
+  async execute(message) {
     const msgcontent = message.content.toLowerCase();
 
     // Lil easter egg
@@ -16,5 +17,8 @@ module.exports = {
         message.reply("Huh?");
       }
     }
+
+    //lvl shit
+    levelHandler.execute(message);
   },
 };
