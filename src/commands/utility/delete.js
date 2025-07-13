@@ -17,17 +17,21 @@ module.exports = {
     interactionUser = interaction.member;
     hasPermissions = interactionUser.roles.cache.has("1393625676350885938");
 
-    if (!hasPermissions)
+    if (hasPermissions) {
+      interactionChannel = interaction.channel;
+      const channelMessages = await interactionChannel.messages.fetch();
+      const amount = interaction.options.getInteger("amount");
+
+      messagesToDelete = channelMessages.first(amount);
+      await interactionChannel.bulkDelete(messagesToDelete, true);
+
+      await interaction.editReply(
+        `🗑️ ${amount} messages successfully deleted.`
+      );
+    } else {
       interaction.editReply(
         "You do not have the required permissions to use this command"
       );
-    interactionChannel = interaction.channel;
-    const channelMessages = await interactionChannel.messages.fetch();
-    const amount = interaction.options.getInteger("amount");
-
-    messagesToDelete = channelMessages.first(amount);
-    await interactionChannel.bulkDelete(messagesToDelete, true);
-
-    await interaction.editReply(`🗑️ ${amount} messages successfully deleted.`);
+    }
   },
 };
