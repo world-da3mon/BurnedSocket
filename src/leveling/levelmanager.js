@@ -36,7 +36,7 @@ function addXp(userId, xpAmount) {
   const user = data[userId];
   user.xp += xpAmount;
 
-  const xpNeeded = Math.floor(100 * Math.pow(1.2, user.level));
+  const xpNeeded = Math.floor(100 * Math.pow(1.6, user.level));
   let leveledUp = false;
 
   if (user.xp >= xpNeeded) {
