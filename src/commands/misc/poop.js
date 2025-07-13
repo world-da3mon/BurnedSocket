@@ -12,13 +12,13 @@ module.exports = {
     ),
   async execute(interaction) {
     await interaction.deferReply({ flags: MessageFlags.Ephemeral });
-    if (!interaction.member.roles.cache.has("1393678029716455556")) {
+    if (!interaction.member.roles.cache.has("1393625676350885938")) {
       await interaction.editReply(
         "You do not have the required permissions to run this command."
       );
     } else {
       const target = interaction.options.getMember("member");
-      const poopRoleId = "1393625676350885938";
+      const poopRoleId = "1393986240407277761";
       const isPoop = target.roles.cache.has(poopRoleId);
 
       if (isPoop) {
