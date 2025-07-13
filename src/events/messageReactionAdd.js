@@ -21,8 +21,7 @@ module.exports = {
           .join("\n");
 
         starboardChannel.send(
-          `>>> ## 🌟 A new message on the starboard 🌟 : ${reactionMessage.url}.
-**${reactionMessage.author}**
+          `>>> ## 🌟 A new message on the starboard 🌟 : ${reactionMessage.url}.\n**${reactionMessage.author}**
 ${reactionMessage.content}
 ${attachments}`
         );

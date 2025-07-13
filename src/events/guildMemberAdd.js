@@ -4,12 +4,12 @@ module.exports = {
   name: Events.GuildMemberAdd,
   async execute(member) {
     // Welcomer
-    const welcomeChannel = await client.channels.cache.get(
+    const welcomeChannel = await member.guild.channels.cache.get(
       "1393675008638849166"
     );
 
     welcomeChannel.send(
-      `>>> 👋 Welcome to **\\Retro Socket//** 💾
+      `>>> 👋 Welcome to **\\\\\\\\Retro Socket//** 💾
 <@${member.user.id}>, thanks to you, we have reached ${member.guild.memberCount} members!
 You're now plugged into the most nostalgic terminal on the internet.
 

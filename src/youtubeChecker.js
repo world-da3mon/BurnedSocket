@@ -42,7 +42,7 @@ async function checkYoutube(client) {
   }
 }
 
-function startYoutubePolling(client, interval = 5 * 60 * 1000) {
+function startYoutubePolling(client, interval = 15 * 60 * 1000) {
   checkYoutube(client);
   setImmediate(() => checkYoutube(client), interval);
 }

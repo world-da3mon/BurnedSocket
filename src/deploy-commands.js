@@ -31,7 +31,7 @@ const rest = new REST().setToken(token);
 (async () => {
   try {
     console.log(
-      `Started refreshing ${commands.length} application (/) commands.`
+      `♻️ Started refreshing ${commands.length} application (/) commands.`
     );
 
     const data = await rest.put(
@@ -40,7 +40,7 @@ const rest = new REST().setToken(token);
     );
 
     console.log(
-      `Successfully reloaded ${data.length} application (/) commands.`
+      `✅ Successfully reloaded ${data.length} application (/) commands.`
     );
   } catch (error) {
     console.error(error);

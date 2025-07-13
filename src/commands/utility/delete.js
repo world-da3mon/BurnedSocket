@@ -17,7 +17,10 @@ module.exports = {
     interactionUser = interaction.member;
     hasPermissions = interactionUser.roles.cache.has("1393678029716455556");
 
-    if (!hasPermissions) return;
+    if (!hasPermissions)
+      interaction.editReply(
+        "You do not have the required permissions to use this command"
+      );
     interactionChannel = interaction.channel;
     const channelMessages = await interactionChannel.messages.fetch();
     const amount = interaction.options.getInteger("amount");
